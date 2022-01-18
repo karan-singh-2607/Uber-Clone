@@ -1,14 +1,16 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import RideConfirmMap from '../../Components/RideConmirmMap'
+import RideConfirmNavigation from '../../Components/RideConfirmationNavigation'
 import RideOptions from '../../Components/RideOptions'
+import RouteMapContainer from '../../Components/RouteMapContainer'
 
 const RideConfirmationScreen = () => {
     return (
 
         <View>
-            <RideConfirmMap />
+            <RouteMapContainer />
             <RideOptions />
+            <RideConfirmNavigation />
         </View>
     )
 }

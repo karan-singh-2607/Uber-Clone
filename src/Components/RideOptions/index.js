@@ -3,9 +3,9 @@ import { Dimensions, ScrollView, StyleSheet, View, Text } from 'react-native'
 import BottomDrawer from 'react-native-bottom-drawer-view'
 import themeColors from '../../Assets/Colors/theme.colors'
 import AvailableRides from '../Available Rides'
-
+import VehicleTypes from '../../Assets/Data/types'
+import AvailableVechile from '../../Assets/Data/cars'
 const windowHeight = Dimensions.get('window').height
-const windowWidth = Dimensions.get('screen').width
 console.log(windowHeight * 0.75)
 
 const Puller = () => {
@@ -31,7 +31,11 @@ const RideOptions = () => {
                 {/* <ScrollView horizontal={true} style={{ flex: 1 }}> */}
                 <View style={{}}>
                     <Puller />
-                    <AvailableRides />
+
+                    <View style={styles.InfoNote}>
+                        <Text style={styles.NoteTxt}>Chose a ride or, swipe up for more</Text>
+                    </View>
+                    {VehicleTypes.map(vehicle => <AvailableRides vehicle={vehicle} key={vehicle.id} />)}
 
                 </View>
                 {/* </ScrollView> */}
@@ -43,6 +47,18 @@ const RideOptions = () => {
 export default RideOptions
 
 const styles = StyleSheet.create({
+    InfoNote: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: '100%',
+        marginTop: 25,
+        marginBottom: 10
+    },
+    NoteTxt: {
+        color: themeColors.Black,
+        fontSize: 14,
+        fontWeight: '400',
+    },
     RideOptionCOntainer: {
         position: 'absolute',
         alignSelf: 'center',
