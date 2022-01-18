@@ -17,6 +17,7 @@ import {
   Colors
 } from 'react-native/Libraries/NewAppScreen';
 import HomeScreen from './src/Screens/HomeScreen';
+import RideConfirmationScreen from './src/Screens/RideConfirmationScreen';
 import WhereToScreen from './src/Screens/WhereToScreen';
 
 
@@ -32,7 +33,8 @@ const App = () => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       {/* <HomeScreen /> */}
-      <WhereToScreen />
+      {/* <WhereToScreen /> */}
+      <RideConfirmationScreen />
     </SafeAreaView>
   );
 };
