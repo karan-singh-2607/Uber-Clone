@@ -8,15 +8,13 @@ import UserNavigation from '../../Components/UserNavigation'
 
 const HomeScreen = () => {
     return (
-        <ScrollView style={styles.Container}>
+        <View style={styles.Container}>
             <UserNavigation />
             <Offers />
             <RideType />
             <DestinationSearch />
             <HomeMapScreen />
-
-
-        </ScrollView>
+        </View>
     )
 }
 
@@ -24,6 +22,6 @@ export default HomeScreen
 
 const styles = StyleSheet.create({
     Container: {
-        padding: 15
+        padding: 15,
     }
 })

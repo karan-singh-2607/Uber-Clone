@@ -2,6 +2,7 @@ import React from 'react'
 import { FlatList, Image } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import AvailableVehicle from '../../Assets/Data/cars'
+import MapStyle from '../../Assets/Data/MapStyle.json'
 const MapContainer = () => {
     const VehicleImage = (type) => {
         if (type == 'UberGo') {
@@ -24,12 +25,15 @@ const MapContainer = () => {
     return (
         <MapView
             style={{ width: '100%', height: '100%' }}
+            showsUserLocation={true}
             initialRegion={{
                 latitude: 28.450627,
                 longitude: -16.263045,
                 latitudeDelta: 0.0022,
                 longitudeDelta: 0.0121,
             }}
+            customMapStyle={MapStyle}
+
         >
             {AvailableVehicle.map((data) => (
 

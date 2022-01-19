@@ -5,7 +5,7 @@ import themeColors from '../../Assets/Colors/theme.colors'
 
 const AvailableRides = (props) => {
     const VehicleAvailable = props.vehicle
-    console.log(VehicleAvailable);
+    // console.log(VehicleAvailable);
     const VehicleImage = () => {
         if (VehicleAvailable.type == 'UberGo') {
             return require('../../Assets/Images/UberGo.png')

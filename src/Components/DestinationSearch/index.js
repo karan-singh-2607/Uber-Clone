@@ -1,20 +1,27 @@
 import React from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, Pressable, StyleSheet, Text, View } from 'react-native'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Entypo from 'react-native-vector-icons/Entypo'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import themeColors from '../../Assets/Colors/theme.colors'
+import { useNavigation } from '@react-navigation/native'
+
 const DestinationSearch = () => {
+    const NavigateTo = useNavigation()
+    const WhereToPress = () => {
+        // console.warn('Where To');
+        NavigateTo.navigate('DestinationSearch')
+    }
     return (
         <View style={styles.AddressPick}>
-            <View style={styles.InputContainer}>
+            <Pressable onPress={WhereToPress} style={styles.InputContainer}>
                 <Text style={styles.InputText}>Where to?</Text>
                 <View style={styles.TimeInput}>
                     <AntDesign name='clockcircle' size={20} color={themeColors.Black} />
                     <Text style={styles.TimeText}>Now</Text>
                     <Entypo name='chevron-down' size={20} color={themeColors.Black} />
                 </View>
-            </View>
+            </Pressable>
             <View style={styles.LastDestination}>
                 <View style={styles.LocationPin}>
                     <Ionicons name='location-sharp' size={25} color={themeColors.Black} />

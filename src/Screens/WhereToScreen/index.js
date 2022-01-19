@@ -5,7 +5,7 @@ import AutocompletePlace from '../../Components/AutocompletePlace'
 import RideBookFor from '../../Components/RideBookFor'
 import SavedPlaces from '../../Components/SavedPlaces'
 
-const index = () => {
+const WhereToScreen = () => {
     return (
         <View style={{ backgroundColor: themeColors.White, height: '100%' }}>
             <View style={styles.MainContainer}>
@@ -17,7 +17,7 @@ const index = () => {
     )
 }
 
-export default index
+export default WhereToScreen
 
 const styles = StyleSheet.create({
     MainContainer: {

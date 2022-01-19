@@ -6,7 +6,7 @@ import themeColors from '../../Assets/Colors/theme.colors';
 
 const UserNavigation = (props) => {
     const Values = props
-    console.log(Values)
+    // console.log(Values)
     return (
         <View style={styles(Values).NavContainer}>
             <View style={styles(Values).UserNavContainer}>

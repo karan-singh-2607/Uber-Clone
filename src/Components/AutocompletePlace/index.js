@@ -5,18 +5,32 @@ import Keys from '../../Assets/Data/Keys/Google_API'
 import themeColors from '../../Assets/Colors/theme.colors'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import PlaceResult from './PlaceResult';
+import { useNavigation } from '@react-navigation/native'
+
 const GOOGLE_API_KEY = Keys.GOOGLE_API_KEY
+navigator.geolocation = require('@react-native-community/geolocation');
+
+const homePlace = {
+    description: 'Home',
+    geometry: { location: { lat: 48.8152937, lng: 2.4597668 } },
+};
+const workPlace = {
+    description: 'Work',
+    geometry: { location: { lat: 48.8496818, lng: 2.2940881 } },
+};
 
 const AutocompletePlace = () => {
     const [SourceAddress, setSourceAddress] = useState(null);
     const [DestinationAddress, setDestinationAddress] = useState(null)
+    const NavigateTo = useNavigation()
 
     useEffect(() => {
-        console.log('useeffect called');
         if (SourceAddress && DestinationAddress) {
-            console.log('redirect')
+            NavigateTo.navigate('ConfirmRide', { SourceAddress, DestinationAddress })
         }
     }, [SourceAddress, DestinationAddress])
+
+
     return (
         <View style={styles.SearchContainer}>
             <View style={styles.OriginStop} />
@@ -25,10 +39,11 @@ const AutocompletePlace = () => {
                 onPress={(data, details = null) => {
                     // 'details' is provided when fetchDetails = true
                     setSourceAddress({ data, details })
-                    // console.log(data, details);
+                    // console.log('Dataa', data, details)
                 }}
                 fetchDetails
                 enablePoweredByContainer={false}
+                suppressDefaultStyles
                 styles={{
                     textInput: styles.InputContainer,
                     container: {
@@ -40,7 +55,6 @@ const AutocompletePlace = () => {
                     listView: {
                         position: 'absolute',
                         top: 110,
-                        zIndex: 1
                     },
 
                 }}
@@ -51,6 +65,10 @@ const AutocompletePlace = () => {
                     language: 'en',
                 }}
                 renderRow={(data) => <PlaceResult data={data} />}
+                currentLocation={true}
+                currentLocationLabel='Current location'
+                predefinedPlaces={[homePlace, workPlace]}
+
             />
             <View style={styles.MatchLine} />
             <View style={styles.DestinationStop} />
@@ -63,6 +81,7 @@ const AutocompletePlace = () => {
                 }}
                 fetchDetails
                 enablePoweredByContainer={false}
+                suppressDefaultStyles
                 styles={{
                     textInput: styles.InputContainer,
                     container: {

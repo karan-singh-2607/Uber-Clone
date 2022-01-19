@@ -6,7 +6,7 @@ import MapView, { Marker } from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions'
 import themeColors from '../../Assets/Colors/theme.colors'
 import GOOGLE_MAPS_API_KEY from '../../Assets/Data/Keys/Google_API'
-
+import MapStyle from '../../Assets/Data/MapStyle.json'
 const GOOGLE_MAPS_API = GOOGLE_MAPS_API_KEY.GOOGLE_API_KEY
 const RouteMapContainer = () => {
     const origin = {
@@ -20,12 +20,15 @@ const RouteMapContainer = () => {
     return (
         <MapView
             style={{ width: '100%', height: '100%' }}
+            showsUserLocation={true}
             initialRegion={{
                 latitude: 28.450627,
                 longitude: -16.263045,
                 latitudeDelta: 0.0022,
                 longitudeDelta: 0.0121,
-            }}        >
+            }}
+            customMapStyle={MapStyle}
+        >
 
             <MapViewDirections
                 origin={origin}
