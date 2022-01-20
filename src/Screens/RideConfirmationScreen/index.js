@@ -7,11 +7,12 @@ import { useRoute } from '@react-navigation/native'
 
 const RideConfirmationScreen = () => {
     const Route = useRoute()
-    console.log(Route.params)
+    console.log('DDD===>', Route.params)
+    const { SourceAddress, DestinationAddress } = Route.params
     return (
 
-        <View>
-            <RouteMapContainer />
+        <View >
+            <RouteMapContainer Source={SourceAddress} Destination={DestinationAddress} />
             <RideOptions />
             <RideConfirmNavigation />
         </View>

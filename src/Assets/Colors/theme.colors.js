@@ -1,7 +1,7 @@
 export default {
     Black: '#000000',
     White: '#ffffff',
-    Gray: '#ddd',
+    Gray: '#eeeeee',
     Saftey_Blue: '#276EF1',
     Green: '#3AA76D',
     Yellow: '#FFC043',

@@ -8,14 +8,15 @@ import themeColors from '../../Assets/Colors/theme.colors'
 import GOOGLE_MAPS_API_KEY from '../../Assets/Data/Keys/Google_API'
 import MapStyle from '../../Assets/Data/MapStyle.json'
 const GOOGLE_MAPS_API = GOOGLE_MAPS_API_KEY.GOOGLE_API_KEY
-const RouteMapContainer = () => {
-    const origin = {
-        latitude: 28.450627,
-        longitude: -16.263045,
+const RouteMapContainer = ({ Source, Destination }) => {
+    console.log('MAP=========>', Source?.details?.geometry?.location, 'Dest====>', Destination?.details?.geometry?.location)
+    const SourceLocation = {
+        latitude: Source?.details?.geometry?.location?.lat,
+        longitude: Source?.details?.geometry?.location?.lng,
     }
-    const destination = {
-        latitude: 28.459627,
-        longitude: -16.263145,
+    const DestinationLocation = {
+        latitude: Destination?.details?.geometry?.location?.lat,
+        longitude: Destination?.details?.geometry?.location?.lng,
     }
     return (
         <MapView
@@ -31,26 +32,26 @@ const RouteMapContainer = () => {
         >
 
             <MapViewDirections
-                origin={origin}
-                destination={destination}
+                origin={SourceLocation}
+                destination={DestinationLocation}
                 apikey={GOOGLE_MAPS_API}
                 strokeWidth={3}
                 strokeColor={themeColors.Black}
             />
-            <Marker coordinate={origin} >
+            <Marker coordinate={SourceLocation} >
                 <View style={styles.Marker}>
                     <View style={styles.OriginOuter}>
                         <View style={styles.OriginInsider}></View>
                     </View>
-                    <Text style={styles.Text}>Origin</Text>
+                    <Text style={styles.Text}>Pickup</Text>
                 </View>
             </Marker>
-            <Marker coordinate={destination} >
+            <Marker coordinate={DestinationLocation} >
                 <View style={styles.Marker}>
                     <View style={styles.DestinationOuter}>
                         <View style={styles.DestinationInsider}></View>
                     </View>
-                    <Text style={styles.Text}>Destination</Text>
+                    <Text style={styles.Text}>Drop</Text>
                 </View>
             </Marker>
         </MapView>
@@ -65,6 +66,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         alignItems: 'center',
+        justifyContent: 'flex-start',
 
     },
     OriginOuter: {
